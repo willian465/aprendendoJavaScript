@@ -1,12 +1,11 @@
 
-//variáveis
 var titulo = document.querySelector(".titulo");
 titulo.textContent = "Aprendendo Java Script";
 
 
 var pacientes = document.querySelectorAll(".paciente"); //"#"" = select de ID
 
-//calcula IMC de todos dos pacientes
+//calculando IMC de todos dos pacientes
 for (var i = 0; i < pacientes.length; i++) {
 
 	var paciente = pacientes[i];
@@ -22,8 +21,9 @@ for (var i = 0; i < pacientes.length; i++) {
 
 	var alturaValida = true;
 	var pesoValido = true;
-	//valida peso e altura válido
-	if (peso <= 0 || peso >= 1000) {
+
+	//validando o peso e altura válido
+	if (peso <= 0 || peso >= 500) {
 		console.log("Peso Inválido!");
 		pesoValido = false;
 		tdImc.textContent = 'Peso Inválido';
@@ -36,17 +36,15 @@ for (var i = 0; i < pacientes.length; i++) {
 		tdImc.textContent = 'Peso Inválido';
 		paciente.classList.add("paciente-invalido");
 	}
-	//calcula IMC
+	//calculando o IMC
 	if (alturaValida && pesoValido) {
-		var imc = peso / (altura * altura);
-		tdImc.textContent = imc.toFixed(2);
+		var imc = calcularImc(peso, altura);
+		tdImc.textContent = imc;
 	}
-
+}
+function calcularImc(peso, altura) {
+	var imc = 0;
+	imc = peso / (altura * altura);
+	return imc.toFixed(2);
 }
 
-var botaoAdiconar = document.querySelector ("#adicionar-paciente");
-botaoAdiconar.addEventListener("click", function(event){
-	event.preventDefault();
-	var form = document.querySelector("#adiciona-paciente");
-	console.log(form.peso.value);
-});

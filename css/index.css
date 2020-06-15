@@ -136,5 +136,5 @@ button[disabled=disabled], button:disabled {
 	color: red;
 }
 .paciente-invalido{
-	background-color: mediumpurple;
+	color:red;
 }
