@@ -50,11 +50,4 @@ function calcularImc(peso, altura) {
 	
 }
 
-function calcularImc2(peso, altura) {
-	var imc = 0;
-	imc = peso / (altura * altura);
-	return imc.toFixed(2);
-
-	
-}
-
+//tirei
