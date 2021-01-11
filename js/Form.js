@@ -44,6 +44,6 @@ function obterPacienteDoFormulario(form) {
         gordura: form.gordura.value,
         imc: calcularImc(form.peso.value, form.altura.value)
     }
-    return paciente; //deu bom
+    return paciente; //deu bom demais
    
 } 
