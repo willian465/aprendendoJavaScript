@@ -45,5 +45,5 @@ function obterPacienteDoFormulario(form) {
         imc: calcularImc(form.peso.value, form.altura.value)
     }
     return paciente;
-    // teste git 10/01/2021
+    // teste git 10/01/2021 ghghghgh
 } 
