@@ -1,52 +1,57 @@
-
 var titulo = document.querySelector(".titulo");
 titulo.textContent = "Aprendendo Java Script";
-
 
 var pacientes = document.querySelectorAll(".paciente"); //"#"" = select de ID
 
 //calculando IMC de todos dos pacientes
-for (var i = 0; i < pacientes.length; i++) {
 
-	var paciente = pacientes[i];
+pacientes.forEach(function (paciente) {
+  var tdpeso = paciente.querySelector(".info-peso"); //"."= seletor de class
+  var peso = tdpeso.textContent;
 
-	var tdpeso = paciente.querySelector(".info-peso") //"."= seletor de class
-	var peso = tdpeso.textContent;
+  var tdAltura = paciente.querySelector(".info-altura");
+  var altura = tdAltura.textContent;
 
-	var tdAltura = paciente.querySelector(".info-altura");
-	var altura = tdAltura.textContent;
+  var tdImc = paciente.querySelector(".info-imc");
 
-	var tdImc = paciente.querySelector(".info-imc");
+  var alturaValida = ValidarAltura(altura);
+  var pesoValido = ValidarPeso(peso);
 
+  //validando o peso e altura válido
+  if (!alturaValida) {
+    console.log("Peso Inválido!");
+    tdImc.textContent = "Peso Inválido";
+    paciente.classList.add("paciente-invalido");
+  }
 
-	var alturaValida = true;
-	var pesoValido = true;
+  if (!pesoValido) {
+    console.log("Altura Inválida!");
+    tdImc.textContent = "Peso Inválido";
+    paciente.classList.add("paciente-invalido");
+  }
+  var imc = calcularImc(peso, altura);
+  tdImc.textContent = imc;
+});
 
-	//validando o peso e altura válido
-	if (peso <= 0 || peso >= 500) {
-		console.log("Peso Inválido!");
-		pesoValido = false;
-		tdImc.textContent = 'Peso Inválido';
-		paciente.classList.add("paciente-invalido");
-	}
-
-	if (altura <= 0 || altura >= 3.00) {
-		console.log("Altura Inválida!");
-		alturaValida = false;
-		tdImc.textContent = 'Peso Inválido';
-		paciente.classList.add("paciente-invalido");
-	}
-	//calculando o IMC
-	if (alturaValida && pesoValido) {
-		var imc = calcularImc(peso, altura);
-		tdImc.textContent = imc;
-	}
+function ValidarPeso(peso) {
+  if (peso >= 0 && peso < 200) {
+    return true;
+  } else {
+    return false;
+  }
 }
+
+function ValidarAltura(altura) {
+  if (altura >= 0 && altura < 3) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+//calculando o IMC
 function calcularImc(peso, altura) {
-	var imc = 0;
-	imc = peso / (altura * altura);
-	return imc.toFixed(2);
-
-	
+  var imc = 0;
+  imc = peso / (altura * altura);
+  return imc.toFixed(2);
 }
-//teste
