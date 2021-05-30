@@ -4,7 +4,6 @@ botaoAdiconar.addEventListener("click", function (event) {
   var form = document.querySelector("#form-adiciona");
 
   // Recuperando dados do form
-
   var paciente = ObterPacienteDoFormulario(form);
 
   var Erros = ValidarPaciente(paciente);
@@ -51,7 +50,7 @@ function MontarTd(valor, classe) {
   var td = document.createElement("td");
   td.textContent = valor;
   td.classList.add(classe);
-
+  
   return td;
 }
 
@@ -89,3 +88,5 @@ function AdicionarPacienteTabela(paciente) {
   var tabela = document.querySelector("#tabela-pacientes");
   tabela.appendChild(pacienteTr);
 }
+
+
