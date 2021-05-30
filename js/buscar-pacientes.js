@@ -8,7 +8,7 @@ botaoBuscar.addEventListener("click", function (event) {
 
   if (xhr.status == 200) {
   }
-
+//
   xhr.addEventListener("load", function () {
     if (xhr.status == 200) {
       var resposta = xhr.responseText;
